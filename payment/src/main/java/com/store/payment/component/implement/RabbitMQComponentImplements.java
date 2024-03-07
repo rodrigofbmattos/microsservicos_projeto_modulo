@@ -72,7 +72,7 @@ public class RabbitMQComponentImplements implements RabbitMQComponent  {
                 .build();
 
         response = this.webClient.get()
-                .uri("/order/" + String.valueOf(order_id)) // Parte final da URL (do Athentication)
+                .uri("/order/" + String.valueOf(order_id)) // Parte final da URL (do Order)
                 .retrieve() // Recuperação da URL
                 .bodyToMono(String.class) // Para retornar somente um item
                 .block();
@@ -85,7 +85,7 @@ public class RabbitMQComponentImplements implements RabbitMQComponent  {
                 .build();
 
         response = this.webClient.get()
-                .uri("/order_item/" + String.valueOf(order_id)) // Parte final da URL (do Athentication)
+                .uri("/order_item/" + String.valueOf(order_id)) // Parte final da URL (do OrderItem)
                 .retrieve() // Recuperação da URL
                 .bodyToMono(String.class) // Para retornar somente um item
                 .block();
@@ -100,20 +100,5 @@ public class RabbitMQComponentImplements implements RabbitMQComponent  {
         rabbitTemplate.convertAndSend(exchange, routingKey, json); // Pega a mensagem e envia para o Exchange em formato de string
 
         System.out.println("Mensagem enviada com sucesso!");
-        // TODO: Identificar o produto
     }
-
-//    private void sendOrderToPayed(String message) {
-//        try {
-//            ObjectMapper mapper = new ObjectMapper();
-//
-//            mapper.registerModule(new JavaTimeModule()); // Converte o objeto Json  para string para fazer parse na data
-//
-//            String json = mapper.writeValueAsString(message); // Converte o Json para string
-//
-//            rabbitTemplate.convertAndSend(exchange, routingKey, json); // Pega a mensagem e envia para o Exchange em formato de string
-//        } catch (JsonProcessingException e) {
-//            System.out.println("Erro: " + e);
-//        }
-//    }
 }

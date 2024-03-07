@@ -1,0 +1,10 @@
+INSERT INTO product (id, name, price) VALUES (1, 'Notebook Core i5', 3500.00);
+INSERT INTO product (id, name, price) VALUES (2, 'Notebook Core i7', 5600.00);
+INSERT INTO product (id, name, price) VALUES (3, 'Mouse Sem Fio', 89.99);
+INSERT INTO product (id, name, price) VALUES (4, 'Monitor 17 Polegadas', 550.00);
+INSERT INTO product (id, name, price) VALUES (5, 'Monitor 21 Polegadas', 780.00);
+INSERT INTO product (id, name, price) VALUES (6, 'Teclado Sem Fio', 129.50);
+INSERT INTO product (id, name, price) VALUES (7, 'Headset Bluetooth', 210.00);
+INSERT INTO product (id, name, price) VALUES (8, 'Cabo USB Tipo-C', 39.9);
+INSERT INTO product (id, name, price) VALUES (9, 'SSD 500GB', 199.99);
+INSERT INTO product (id, name, price) VALUES (10, 'SSD 1TB', 329.79);

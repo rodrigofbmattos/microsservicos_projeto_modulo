@@ -33,6 +33,7 @@ public class RabbitMQComponentImplements implements RabbitMQComponent  {
         //int order_id = (int) object.get("order_id");
         int user_id = (int) object.get("user_id");
         String products_name = (String) object.get("products_name");
+        //double total_value = (double) object.get("total_value");
 
         String response = this.webClient.get()
                                             .uri("/user/" + String.valueOf(user_id)) // Parte final da URL (do Athentication)
@@ -45,7 +46,7 @@ public class RabbitMQComponentImplements implements RabbitMQComponent  {
 
         String content = emailServiceImplements.constructOrderContent(products_name, (String) user.get("name"));
 
-        emailServiceImplements.sendEmail(content, email, "Título do E-mail: Notification");
+        emailServiceImplements.sendEmail(content, email, "E-Commerce Infnet");
 
 //        System.out.println("Mensagem enviada com sucesso!");
 //        System.out.println(response);

@@ -46,51 +46,53 @@ public class RabbitMQComponentImplements implements RabbitMQComponent  {
         Map<String, Object> object = Conversor.convertToObject(message);
 
         String response;
-        String payment_status = "PAYED";
 
-        int user_id = (int) object.get("user_id");
-        int order_id = (int) object.get("id");
+        // Muda o status do pagamento para PAYED simulando o pagamento da Order.
+        final String payment_status = "PAYED";
+
+//        int user_id = (int) object.get("user_id");
+//        int order_id = (int) object.get("id");
 
         object.put("status_order", payment_status);
 
-        // Busca o User
-        this.webClient = WebClient.builder()
-                .baseUrl("http://localhost:8088/api")
-                .build();
-
-        response = this.webClient.get()
-                .uri("/user/" + String.valueOf(user_id)) // Parte final da URL (do Athentication)
-                .retrieve() // Recuperação da URL
-                .bodyToMono(String.class) // Para retornar somente um item
-                .block();
-
-        Map<String, Object> user = Conversor.convertToObject(response);
-
-        // Recupera a Order
-        this.webClient = WebClient.builder()
-                .baseUrl("http://localhost:8084/api")
-                .build();
-
-        response = this.webClient.get()
-                .uri("/order/" + String.valueOf(order_id)) // Parte final da URL (do Order)
-                .retrieve() // Recuperação da URL
-                .bodyToMono(String.class) // Para retornar somente um item
-                .block();
-
-        Map<String, Object> order = Conversor.convertToObject(response);
-
-        // Recupera a Order
-        this.webClient = WebClient.builder()
-                .baseUrl("http://localhost:8084/api")
-                .build();
-
-        response = this.webClient.get()
-                .uri("/order_item/" + String.valueOf(order_id)) // Parte final da URL (do OrderItem)
-                .retrieve() // Recuperação da URL
-                .bodyToMono(String.class) // Para retornar somente um item
-                .block();
-
-        Map<String, Object> orderItem = Conversor.convertToObject(response);
+//        // Busca o User
+//        this.webClient = WebClient.builder()
+//                .baseUrl("http://localhost:8088/api")
+//                .build();
+//
+//        response = this.webClient.get()
+//                .uri("/user/" + String.valueOf(user_id)) // Parte final da URL (do Athentication)
+//                .retrieve() // Recuperação da URL
+//                .bodyToMono(String.class) // Para retornar somente um item
+//                .block();
+//
+//        Map<String, Object> user = Conversor.convertToObject(response);
+//
+//        // Recupera a Order
+//        this.webClient = WebClient.builder()
+//                .baseUrl("http://localhost:8084/api")
+//                .build();
+//
+//        response = this.webClient.get()
+//                .uri("/order/" + String.valueOf(order_id)) // Parte final da URL (do Order)
+//                .retrieve() // Recuperação da URL
+//                .bodyToMono(String.class) // Para retornar somente um item
+//                .block();
+//
+//        Map<String, Object> order = Conversor.convertToObject(response);
+//
+//        // Recupera a Order
+//        this.webClient = WebClient.builder()
+//                .baseUrl("http://localhost:8084/api")
+//                .build();
+//
+//        response = this.webClient.get()
+//                .uri("/order_item/" + String.valueOf(order_id)) // Parte final da URL (do OrderItem)
+//                .retrieve() // Recuperação da URL
+//                .bodyToMono(String.class) // Para retornar somente um item
+//                .block();
+//
+//        Map<String, Object> orderItem = Conversor.convertToObject(response);
 
 
         ObjectMapper mapper = new ObjectMapper();

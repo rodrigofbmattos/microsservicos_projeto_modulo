@@ -35,7 +35,7 @@ public class EmailServiceImplements extends GenericServiceImplements {
     }
 
     public String constructOrderContent(String products_name, String name) {
-        return MessageFormat.format("<body><header><h1>Olá, {0}!</h1><p><h2>Obrigados por comprar nosso(s) produto(s).</h2></p><header><body>", name, products_name);
+        return MessageFormat.format("<body><header><h1>Olá, {0}!</h1><p><h2>Obrigados por comprar nosso(s) produto(s).</h2></p><h3><p>{1}</p></h3><header><body>", name, products_name.replace(",","<p>"));
 
     }
 
